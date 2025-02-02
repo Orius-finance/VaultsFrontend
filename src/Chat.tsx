@@ -2,9 +2,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import type { TextResponse } from "@/api"
 import { useSendMessageMutation } from "@/api"
-import { ImageIcon, Wallet, Smile, MoreHorizontal } from "lucide-react"
+import { ImageIcon, Smile, MoreHorizontal } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
+import { ConnectButton } from "@rainbow-me/rainbowkit"
 
 export default function Chat() {
   const { agentId } = useParams()
@@ -21,7 +22,7 @@ export default function Chat() {
 
   useEffect(() => {
     scrollToBottom()
-  }, [messages])
+  }, [messages, scrollToBottom])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -62,10 +63,7 @@ export default function Chat() {
             <span className="text-sm text-green-500">Online</span>
           </div>
         </div>
-        <Button className="gap-2">
-          <Wallet className="h-4 w-4" />
-          Connect Wallet
-        </Button>
+        <ConnectButton />
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 w-full">
