@@ -22,7 +22,7 @@ export default function Chat() {
 
   useEffect(() => {
     scrollToBottom()
-  }, [messages, scrollToBottom])
+  }, [messages, scrollToBottom]) // Added scrollToBottom to dependencies
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -57,7 +57,7 @@ export default function Chat() {
     <div className="flex flex-col h-screen w-full overflow-hidden">
       <div className="border-b p-4 flex items-center justify-between bg-background shrink-0">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-primary" />
+          <img src="/orius.png" alt="Orius Finance Logo" className="w-12 h-12 rounded-full object-cover" />
           <div>
             <h3 className="font-semibold">Orius Finance</h3>
             <span className="text-sm text-green-500">Online</span>
@@ -165,3 +165,4 @@ export default function Chat() {
     </div>
   )
 }
+

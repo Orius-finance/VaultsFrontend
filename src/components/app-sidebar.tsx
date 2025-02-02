@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { VaultCard } from "./vault-card"
 
 import {
   Sidebar,
@@ -21,7 +22,7 @@ const items = [
     title: "Chat",
     url: "chat",
     icon: Inbox,
-  }
+  },
 ]
 
 export function AppSidebar() {
@@ -40,25 +41,30 @@ export function AppSidebar() {
             </Button>
           </div>
           <Input placeholder="Search" className="mb-4" />
-          <p className="text-sm text-muted-foreground">Check out your current vaults</p>
+
+          <SidebarGroup className="mb-4 -mx-4">
+            <SidebarGroupLabel className="px-4">Application</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {items.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild className="pl-4">
+                      <a href={`/${agentId}/${item.url}`}>
+                        <item.icon />
+                        <span>{item.title}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+
+          <p className="text-sm text-muted-foreground mb-4">Check out your current vaults</p>
+
+          <VaultCard />
+          <VaultCard />
         </div>
-        <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={`/${agentId}/${item.url}`}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="p-4">
         <ThemeToggle />
