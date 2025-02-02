@@ -1,4 +1,4 @@
-import { Plus, Inbox, Calendar } from "lucide-react"
+import { Plus, Inbox } from "lucide-react"
 import { useParams } from "react-router-dom"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "@/components/ui/button"
@@ -21,19 +21,14 @@ const items = [
     title: "Chat",
     url: "chat",
     icon: Inbox,
-  },
-  {
-    title: "Character Overview",
-    url: "character",
-    icon: Calendar,
-  },
+  }
 ]
 
 export function AppSidebar() {
   const { agentId } = useParams()
 
   return (
-    <Sidebar className="w-[280px] shrink-0 border-r bg-background">
+    <Sidebar className="w shrink-0 border-r bg-background">
       <SidebarContent>
         <div className="p-4">
           <div className="flex items-center justify-between mb-4">
