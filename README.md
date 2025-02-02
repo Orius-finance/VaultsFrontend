@@ -1,6 +1,6 @@
 # VaultsFrontend
 
-# Setup instructions
+## Setup instructions
 ```
 pnpm i
 pnpm dev
